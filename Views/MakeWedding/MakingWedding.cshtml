@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "WeddingMakeWedding- Carlos";
+}
+<div id="master">
+    <div id="header">
+        <h1>Plan your Wedding</h1>
+        <a href="/Mlogout">Logout</a>
+        <a href="/plannerDashboard">Dashboard</a>
+    </div>
+    <div id="mainBody">
+        <form action="/createWedding" method="post">
+            <ul>
+                <label>Wedder One:</label>
+                <label>Wedder Two:</label>
+                <label>Date:</label>
+                <label>Wedding Address</label>
+            </ul>
+            <ul>
+                <input type="text" name="WedderOne" placeholder="ex: SpongeBob">
+                <input type="text" name="WedderTwo" placeholder="ex: SandyCheeks">
+                <input type="Date" name="Date">
+                <input type="text" name="WeddingAddress" placeholder="ex: Crabby Patty">
+            </ul>
+            <button type="submit" name="CreateWeddingButton">Create</button>
+        </form>
+    </div>
+    <div id="footer">
+        @{
+            foreach(var error in @ViewBag.Errors){
+                if(@error.Errors.Count > 0){
+                    <p>@error.Errors[0].ErrorMessage</p>
+                }
+            }
+            if(@ViewBag.BadDate != null){
+                <p>@ViewBag.BadDate</p>
+            }
+        }
+    </div>
+</div>

@@ -1,0 +1,30 @@
+*{
+    margin: 0px auto;
+}
+    #master{
+        text-align: center;
+        margin: 2rem 0px;
+    }
+        #mainBody, #header{
+            text-align: left;
+        }
+            #mainBody ul{
+                display: inline-block;
+                vertical-align: top;
+            }
+            #mainBody label, input{
+                display: block;
+                margin: 0.4em 0px;
+                padding: 0.5em 0px;
+            }
+            #mainBody input{
+                margin: 1em 0px;
+            }
+
+    .myMoney{
+        display: inline-block;
+        vertical-align: top;
+    }
+    #myAccountFooter{
+        text-align: left;
+    }

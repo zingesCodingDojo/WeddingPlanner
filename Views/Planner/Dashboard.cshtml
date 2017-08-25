@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "WeddingPlannerDashboard- Carlos";
+}
+<div id="master">
+    <div id="header">
+        <h1>Welcome To the Wedding Planner!</h1>
+        <a href="/Dlogout">Logout</a>
+    </div>
+    <div id="mainBody">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Wedding</th>
+                    <th>Date</th>
+                    <th>Guest(s)</th>
+                    <th>My Intended Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach(var item in @ViewBag.WeddingSeason){
+                        <tr>
+                            <td><a href="/togetherWedding/@item.WeddingId">@item.WedderOne & @item.WedderTwo</a></td>
+                            <td>@item.Date</td>
+                            <td>@item.Guests.Count</td>
+                            @if(@item.Userid == @ViewBag.MyID){
+                                <td><a href="/delete/@item.WeddingId">Delete</a></td>
+                            }
+                            else{
+                                <td>
+                                    <form action="/toggler/@item.WeddingId" method="POST">
+                                        <select name="RSVP" onchange="this.form.submit()">
+                                            
+                                            <option value="RSVP">RSVP</option>
+                                            <option selected>Pick Double Booking Okay</option>
+                                            <option value="Un-RSVP">Un-RSVP</option>
+                                        </select>
+                                    </form>
+                                </td>
+                            }
+                            
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div id="footer">
+        <form action="/newWeddingPage" method="get">
+            <button type="submit" name="NewWeddingButton">New Wedding</button>
+        </form>
+    </div>
+</div>

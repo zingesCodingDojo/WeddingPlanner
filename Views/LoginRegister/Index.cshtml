@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "WeddingPlannerIndex - Carlos";
+}
+<div id="main">
+    <div id="header">
+        <h1>Register</h1>
+        <h2>Login</h2>
+    </div>
+    <div id="mainBody">
+        <form action="/register" method="post">
+            <ul>
+                <label>First Name:</label>
+                <label>Last Name:</label>
+                <label>Email:</label>
+                <label>Password:</label>
+                <label>PW Confirm:</label>
+            </ul>
+            <ul>
+                <input type="text" name="FirstName" placeholder="ex: Jim">
+                <input type="text" name="LastName" placeholder="ex: Halper">
+                <input type="email" name="Email" placeholder="ex: jihalp@dun.com">
+                <input type="password" name="Password" placeholder="Secret">
+                <input type="password" name="PWConfirm" placeholder="Secret">
+            </ul>
+            <button type="submit" name="RegisterButton">Register</button>
+        </form>
+        
+        <form action="/login" method="post">
+            <ul>
+                    <label>Email:</label>
+                    <label>Password:</label>
+                </ul>
+                <ul>
+                    <input type="email" name="Email" placeholder="ex: jihalp@dun.com">
+                    <input type="password" name="Password" placeholder="Secret">
+                </ul>
+            <button type="submit" name="LoginButton">Login</button>
+        </form>
+    </div>
+    <div id="footer">
+        @{
+            foreach(var error in @ViewBag.Errors){
+                if(@error.Errors.Count > 0){
+                    <p>@error.Errors[0].ErrorMessage</p>
+                }
+            }
+        }
+        @{
+            foreach(var error in @ViewBag.LoginErrors){
+                <p>@error</p>
+            }
+        }
+    </div>
+</div>
